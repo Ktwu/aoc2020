@@ -1,0 +1,10 @@
+[package]
+name = "aoc2020"
+version = "0.1.0"
+authors = ["Kellie Medlin <kellie.medlin@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+arr_macro = "0.1.3"
