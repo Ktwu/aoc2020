@@ -1,6 +1,46 @@
 mod day1;
+mod day2;
+mod utils;
+
+use std::fs::File;
+use std::io::{prelude::*, BufReader, Lines};
+
+/**
+ *  Helpful links:
+ *
+ *  Need to convert raw input to something easier to copy-paste?
+ *    https://convert.town/replace-new-lines-with-commas
+ */
 
 fn main() {
+    day2();
+}
+
+fn day2() {
+    let password_input = get_input("src/day2/input").map(|l| l.unwrap());
+    let count = password_input.fold((0, 0), |a: (usize, usize), line: String| {
+        (
+            if day2::p1(&line).unwrap() {
+                a.0 + 1
+            } else {
+                a.0
+            },
+            if day2::p2(&line).unwrap() {
+                a.1 + 1
+            } else {
+                a.1
+            },
+        )
+    });
+
+    // 434
+    println!("password philosophy part 1: {:?}", count.0);
+
+    // 509
+    println!("password philosophy part 2: {:?}", count.1);
+}
+
+fn day1() {
     let report_repair_input = [
         1293, 1207, 1623, 1675, 1842, 1410, 85, 1108, 557, 1217, 1506, 1956, 1579, 1614, 1360,
         1544, 1946, 1666, 1972, 1814, 1699, 1778, 1529, 2002, 1768, 1173, 1407, 1201, 1264, 1739,
@@ -15,11 +55,22 @@ fn main() {
         1362, 1271, 1802, 1944, 1821, 1880, 1788, 1733, 1150, 1314, 1727, 1434, 1833, 1312, 1457,
         160, 1629, 1967, 1505, 1239, 1266, 1838, 1687, 1630, 1591, 1893, 1450, 1234, 1755, 1523,
         1533, 1499, 1865, 1725, 1444, 1517, 1167, 1738, 1519, 1263, 1901, 1627, 1644, 1771, 1812,
-        1270, 1497, 1707, 1708, 1396
+        1270, 1497, 1707, 1708, 1396,
     ];
 
     // 793524
-    println!("report_repair part 1: {:?}", day1::report_repair_p1(&report_repair_input));
+    println!(
+        "report_repair part 1: {:?}",
+        day1::report_repair_p1(&report_repair_input)
+    );
 
-    println!("report_repair part 2: {:?}", day1::report_repair_p2(&report_repair_input));
+    // 61515678
+    println!(
+        "report_repair part 2: {:?}",
+        day1::report_repair_p2(&report_repair_input)
+    );
+}
+
+fn get_input(file: &str) -> Lines<BufReader<File>> {
+    BufReader::new(File::open(file).unwrap()).lines()
 }
