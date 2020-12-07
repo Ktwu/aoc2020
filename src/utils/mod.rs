@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use anyhow::{anyhow, Error};
 use std::fmt;
 use std::fs::File;

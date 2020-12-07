@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use crate::{aocbail, utils, utils::AOCError};
 use regex;
 

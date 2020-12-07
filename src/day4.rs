@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use crate::{aocbail, regex, utils};
 use lazy_static::lazy_static;
 use regex::Regex;
@@ -123,14 +125,14 @@ pub fn day4() {
 
 pub fn num_valid_passports(
     mut input: impl Iterator<Item = String>,
-    validate_date: bool,
+    validate_data: bool,
 ) -> AOCResult<usize> {
     let mut count: usize = 0;
-    let mut passport = Passport::new(validate_date);
+    let mut passport = Passport::new(validate_data);
     while let Some(line) = input.next() {
         if line.len() == 0 {
             count += if passport.is_valid() { 1 } else { 0 };
-            passport = Passport::new(validate_date);
+            passport = Passport::new(validate_data);
         } else {
             passport.parse_entries(&line)?;
         }
