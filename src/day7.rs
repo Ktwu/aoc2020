@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use crate::{regex, utils};
 use lazy_static::lazy_static;
 use regex::Regex;
