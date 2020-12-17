@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
-use crate::{aocbail, regex, utils};
-use utils::{AOCResult, AOCError};
+use crate::{regex, utils};
+use utils::{AOCResult};
 use strum_macros::EnumString;
 use std::str::FromStr;
 use lazy_static::lazy_static;
@@ -40,8 +40,8 @@ pub fn waypoint_manhattan(commands: &CommandList) -> i32 {
     let mut waypoint: (i32, i32) = (10, 1);
     let mut ship: (i32, i32) = (0, 0);
 
-    for (Command, value) in commands.iter() {
-        match Command {
+    for (command, value) in commands.iter() {
+        match command {
             Command::N => waypoint.1 += value,
             Command::S => waypoint.1 -= value,
             Command::E => waypoint.0 += value,
@@ -85,8 +85,8 @@ pub fn manhattan_distance(commands: &CommandList) -> i32 {
     let mut direction: usize = 0;
     let mut x: i32 = 0;
     let mut y: i32 = 0;
-    for (Command, value) in commands.iter() {
-        match Command {
+    for (command, value) in commands.iter() {
+        match command {
             Command::N => y += value,
             Command::S => y -= value,
             Command::E => x += value,

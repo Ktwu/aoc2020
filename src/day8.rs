@@ -11,9 +11,9 @@ lazy_static! {
 
 #[derive(Clone, Copy, Debug)]
 pub enum CMD {
-    acc(i32),
-    jmp(i32),
-    nop(i32),
+    Acc(i32),
+    Jmp(i32),
+    Nop(i32),
 }
 
 #[derive(Default, Clone, Copy)]
@@ -30,14 +30,14 @@ pub struct Program {
 impl ProgramState {
     pub fn apply(&mut self, cmd: CMD) {
         match cmd {
-            CMD::acc(v) => {
+            CMD::Acc(v) => {
                 self.ip += 1;
                 self.acc += v;
             },
-            CMD::jmp(v) => {
+            CMD::Jmp(v) => {
                 self.ip = (self.ip as i32 + v) as usize;
             },
-            CMD::nop(_) => {
+            CMD::Nop(_) => {
                 self.ip += 1;
             },
         };
@@ -51,9 +51,9 @@ impl Program {
             let capture = CMD_REGEX.captures_iter(&line).next()?;
             let value = capture[2].parse::<i32>()?;
             commands.push(match &capture[1] {
-                "acc" => CMD::acc(value),
-                "jmp" => CMD::jmp(value),
-                "nop" => CMD::nop(value),
+                "acc" => CMD::Acc(value),
+                "jmp" => CMD::Jmp(value),
+                "nop" => CMD::Nop(value),
                 _ => aocbail!("Unable to parse command")
             });
         }
@@ -96,9 +96,9 @@ impl Program {
 
     fn toggle(&mut self, ip: usize) -> bool {
         self.commands[ip] = match self.commands[ip] {
-            CMD::acc(_) => { return false; },
-            CMD::jmp(v) => CMD::nop(v),
-            CMD::nop(v) => CMD::jmp(v),
+            CMD::Acc(_) => { return false; },
+            CMD::Jmp(v) => CMD::Nop(v),
+            CMD::Nop(v) => CMD::Jmp(v),
         };
         true
     }

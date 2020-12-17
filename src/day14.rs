@@ -1,10 +1,10 @@
 #![allow(dead_code)]
 
-use crate::{aocbail, regex, utils};
+use crate::{regex, utils};
 use lazy_static::lazy_static;
 use regex::Regex;
 use std::collections::HashMap;
-use utils::{AOCError, AOCResult};
+use utils::{AOCResult};
 
 lazy_static! {
     static ref MEM_REGEX: Regex = regex!(r"^mem\[([0-9]+)\] = ([0-9]+)$");
@@ -25,7 +25,7 @@ pub struct Program {
 
 impl Program {
     pub fn load(filename: &str) -> AOCResult<Self> {
-        let mut input = utils::get_input(filename);
+        let input = utils::get_input(filename);
         let mut instructions = Vec::new();
         for line in input {
             let instruction = if let Some(capture) = MASK_REGEX.captures_iter(&line).next() {
@@ -67,7 +67,7 @@ impl Program {
         (mask_0, mask_1, mask_x)
     }
 
-    fn all_masks(mask_0: u64, mask_1: u64, mask_x: u64) -> Vec<(u64, u64)> {
+    fn all_masks(_mask_0: u64, mask_1: u64, mask_x: u64) -> Vec<(u64, u64)> {
         // APPARENTLY 0 masks by default means "don't do anything"
         // but we'll leverage it later to force overwritting some values to 0
         let mut masks: Vec<(u64, u64)> = vec![(!0, mask_1)];
@@ -108,7 +108,7 @@ impl Program {
                 }
             }
         }
-        memory.iter().fold(0, |a, (k, v)| a + v)
+        memory.iter().fold(0, |a, (_k, v)| a + v)
     }
 
     pub fn part_2(&self) -> u64 {
@@ -126,7 +126,7 @@ impl Program {
                 }
             }
         }
-        memory.iter().fold(0, |a, (k, v)| a + v)
+        memory.iter().fold(0, |a, (_k, v)| a + v)
     }
 }
 

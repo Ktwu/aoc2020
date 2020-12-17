@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 
-use crate::{aocbail, utils};
-use utils::{AOCResult, AOCError};
+use crate::{utils};
 use std::collections::HashMap;
 
 pub fn day10() {

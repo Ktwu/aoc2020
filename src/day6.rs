@@ -1,8 +1,7 @@
 #![allow(dead_code)]
 
-use crate::{aocbail, utils};
-use std::collections::HashSet;
-use utils::{AOCError, AOCResult};
+use crate::{utils};
+use utils::{AOCResult};
 
 pub fn day6() {
     let input = utils::get_input("day6");

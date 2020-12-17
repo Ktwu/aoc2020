@@ -1,10 +1,9 @@
 #![allow(dead_code)]
 
-use crate::{aocbail, regex, utils};
+use crate::{regex};
 use lazy_static::lazy_static;
 use regex::Regex;
 use std::collections::HashMap;
-use utils::{AOCError, AOCResult};
 
 lazy_static! {
     static ref MEM_REGEX: Regex = regex!(r"^mem\[([0-9]+)\] = ([0-9]+)$");

@@ -1,7 +1,6 @@
 #![allow(dead_code)]
 
-use crate::{aocbail, utils};
-use utils::{AOCResult, AOCError};
+use crate::{utils};
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 pub enum SeatState {
@@ -45,7 +44,7 @@ impl SeatGrid {
 
        for (y, row) in self.grid.iter().enumerate() {
            let mut new_row = Vec::new();
-           for (x, seat) in row.iter().enumerate() {
+           for (x, _seat) in row.iter().enumerate() {
             new_row.push([
                 (-1, -1),
                 (-1, 0),
@@ -74,7 +73,7 @@ impl SeatGrid {
 
             for (y, row) in self.grid.iter().enumerate() {
                 for (x, seat) in row.iter().enumerate() {
-                    let (num_occupied, num_empty) = step_map[x][y].iter().map(|cell|
+                    let (num_occupied, _num_empty) = step_map[x][y].iter().map(|cell|
                         match cell {
                             Some((i, j)) => self.grid[*i][*j],
                             None => SeatState::Floor,

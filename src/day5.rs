@@ -37,9 +37,9 @@ pub fn day5() {
 }
 
 pub fn find_your_seat(input: impl Iterator<Item=String>) -> AOCResult<usize> {
-    const seat_count: usize = 8*128;
-    let mut seats: [u8; seat_count] = [0; seat_count];
-    let mut min: usize = seat_count-1;
+    const SEAT_COUNT: usize = 8*128;
+    let mut seats: [u8; SEAT_COUNT] = [0; SEAT_COUNT];
+    let mut min: usize = SEAT_COUNT-1;
     for line in input {
         let seat = find_seat(&line)?;
         min = std::cmp::min(min, seat);
