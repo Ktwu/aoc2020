@@ -1,6 +1,7 @@
 #![feature(try_trait)]
 #![feature(map_into_keys_values)]
 #![feature(hash_drain_filter)]
+#![feature(min_const_generics)]
 
 mod utils;
 mod day1;
