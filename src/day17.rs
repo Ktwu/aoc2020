@@ -44,8 +44,7 @@ impl<const N: usize> ConwayGrid<{ N }> {
             .iter()
             .flat_map(|cell| Self::neighbors(cell))
         {
-            let count = cells.entry(cell).or_insert(0);
-            *count += 1;
+            *cells.entry(cell).or_insert(0) += 1;
         }
 
         self.active_cells = cells
@@ -95,7 +94,7 @@ mod tests {
 
     #[test]
     pub fn test_day17() {
-        let mut conwaygrid = ConwayGrid::<3>::load("test_day17").into_iter();
+        let mut conwaygrid = ConwayGrid::<1>::load("test_day17").into_iter();
         assert_eq!(conwaygrid.nth(1).unwrap(), 21);
 
         let mut conwaygrid = ConwayGrid::<4>::load("test_day17").into_iter();
