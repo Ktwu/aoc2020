@@ -1,29 +1,31 @@
 #![feature(try_trait)]
 #![feature(map_into_keys_values)]
 #![feature(hash_drain_filter)]
+#![feature(hash_set_entry)]
 #![feature(min_const_generics)]
 
 mod utils;
-mod day1;
-mod day2;
-mod day3;
-mod day4;
-mod day5;
-mod day6;
-mod day7;
-mod day8;
-mod day9;
-mod day10;
-mod day11;
-mod day12;
-mod day13;
-mod day14;
-mod day15;
-mod day16;
-mod day17;
-mod day18;
-mod day19;
-mod day20;
+//mod day1;
+//mod day2;
+//mod day3;
+//mod day4;
+//mod day5;
+//mod day6;
+//mod day7;
+//mod day8;
+//mod day9;
+//mod day10;
+//mod day11;
+//mod day12;
+//mod day13;
+//mod day14;
+//mod day15;
+//mod day16;
+//mod day17;
+//mod day18;
+//mod day19;
+//mod day20;
+mod day21;
 
 /**
  *  Helpful links:
@@ -52,5 +54,6 @@ fn main() {
     //day17::day17();
     //day18::day18();
     //day19::day19();
-    day20::day20();
+    //day20::day20();
+    day21::day21();
 }
